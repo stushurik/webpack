@@ -49,7 +49,7 @@ describe("ExternalModule", () => {
 			externalModule.getSourceString = jest.fn(() => expectedString);
 
 			// invoke
-			const result = externalModule.source();
+			const result = externalModule.source({});
 
 			// check
 			expect(externalModule.getSource.mock.calls.length).toBe(1);
