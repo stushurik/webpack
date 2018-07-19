@@ -560,8 +560,8 @@ chunk    {2} 2.bundle.js 60 bytes <{1}> [rendered]
 chunk {main} bundle.js (main) 73 bytes >{0}< >{1}< [entry] [rendered]
     > ./index main
  [./a.js] 22 bytes {main} [built]
-     cjs require ./a [./index.js] 1:0-14
      cjs require ./a [./e.js] 1:0-14
+     cjs require ./a [./index.js] 1:0-14
      [./index.js] Xms -> factory:Xms building:Xms = Xms
  [./index.js] 51 bytes {main} [built]
      single entry ./index  main
@@ -2229,8 +2229,8 @@ Entrypoint main = main.js
     harmony export imported specifier ./CompC [./components/src/index.js] 2:0-43
 [./components/src/index.js] 84 bytes [built]
     [no exports used]
-    harmony side effect evaluation ./components [./main.js] ./main.js + 1 modules 1:0-44
     harmony side effect evaluation ./components [./foo.js] 1:0-37
+    harmony side effect evaluation ./components [./main.js] ./main.js + 1 modules 1:0-44
 [./foo.js] 101 bytes {0} [built]
     import() ./foo  ./main.js 6:0-15
 [./main.js] ./main.js + 1 modules 231 bytes {main} [built]
