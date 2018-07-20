@@ -3,6 +3,7 @@ const fs = require("fs");
 const ts = require("typescript");
 
 const override = process.argv.includes("--override");
+const doWrite = process.argv.includes("--write");
 
 async function run() {
 	const rootPath = path.resolve(__dirname, "..");
@@ -119,18 +120,23 @@ async function run() {
 				}
 			});
 			if (updates.length > 0) {
-				let fileContent = fs.readFileSync(file, "utf-8");
-				updates.sort((a, b) => {
-					return b.start - a.start;
-				});
-				for (const update of updates) {
-					fileContent =
-						fileContent.substr(0, update.start) +
-						update.content +
-						fileContent.substr(update.end);
+				if(doWrite) {
+					let fileContent = fs.readFileSync(file, "utf-8");
+					updates.sort((a, b) => {
+						return b.start - a.start;
+					});
+					for (const update of updates) {
+						fileContent =
+							fileContent.substr(0, update.start) +
+							update.content +
+							fileContent.substr(update.end);
+					}
+					console.log(`${file} ${updates.length} JSDoc comments added/updated`);
+					fs.writeFileSync(file, fileContent, "utf-8");
+				} else {
+					console.log(file);
 				}
-				console.log(`${file} ${updates.length} JSDoc comments added/updated`);
-				fs.writeFileSync(file, fileContent, "utf-8");
+				process.exitCode = 1;
 			}
 		}
 	}
