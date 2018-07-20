@@ -2263,6 +2263,11 @@ Entrypoint main = main.js
     |     [only some exports used: z]"
 `;
 
+exports[`StatsTestCases should print correct stats for side-effects-simple-unused 2`] = `
+"Entrypoint e1 = runtime.js all.js e1.js
+Entrypoint e2 = runtime.js all.js e2.js"
+`;
+
 exports[`StatsTestCases should print correct stats for simple 1`] = `
 "Hash: 06cc914b885215f96c5a
 Time: Xms
